@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="assetsFile/css/index.css"  >
+    <link rel="stylesheet" href="assetsFile/css/bootstrap.css"  >
+    <!-- CSS only -->
+    <script src="assetsFile/js/header.js" type="text/javascript" defer></script>
+    <script src="assetsFile/js/footer.js" type="text/javascript" defer></script>
+
+    <title>ReSell</title>
+</head>
+<body>
+    
+<!---Header Section--->
+
+<header-component></header-component>
+
+
+<!--Main Section-->
+<main style="margin: 1rem;">
+
+<!--DashBoard-->
+
+<!--Icon section and Blance section-->
+
+<section class="home-icon-blance-section">
+<div class="home-icon-container">
+  <div class="home-icon-col">
+    <span>
+      &#10070;
+    </span>
+  </div>
+</div>
+
+<div class="blance-container">
+  <div class="blance-col">
+    <div class="card-body">
+      <h5 class="card-title text-muted">Blance</h5>
+   
+      <p class="card-text">400.00tk</p>
+      <a href="#" class="card-link btn btn-success ">Reacherge</a>
+      <a href="#" class="card-link btn btn-dark">Withdrow</a>
+    </div>
+</div>
+</div>
+
+
+</section>
+
+<section class="card-section">
+    <div class="dashboard-card-section-container">
+ <!--Card col-->
+        <div class="card-col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-muted">Active Product</h5>
+               
+                  <div class="image-icon-digit">
+                    <img src="./assetsFile/image/imageLogo/add-to-cart.png" alt="">
+                    <h6 class="card-text">40</h6>
+                  </div>
+                  <a href="#" class="card-link btn btn-info btn-block ">Show All</a>
+                </div>
+              </div>
+        </div>
+
+<!--Card col-->
+        <div class="card-col">
+            <div class="card"   style="width: 18rem;" >
+                <div class="card-body">
+                  <h5 class="card-title text-muted">Sells Product</h5>
+               <div class="image-icon-digit">
+                 <img src="./assetsFile/image/imageLogo/shopping-cart.png" alt="">
+                 <h6 class="card-text">86</h6>
+               </div>
+                
+                  <a href="#" class="card-link btn btn-success ">Show All</a>
+                  
+                </div>
+              </div>
+        </div>
+
+
+<!--Card col-->
+        <div class="card-col">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title text-muted">Buy Produt</h5>
+               
+                  <div class="image-icon-digit">
+                    <img src="./assetsFile/image/imageLogo/buy.png" alt="">
+                    <h6 class="card-text">34</h6>
+                  </div>
+                  <a href="#" class="card-link btn btn-success ">Show All</a>
+                
+                </div>
+              </div>
+        </div>
+
+
+
+    </div>
+</section>
+
+
+<section class="pie-chart">
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+</section>
+
+
+
+
+</main>
+
+<!--Footer Section-->
+<footer-component></footer-component>
+
+
+<script>
+ 
+</script>
+<script src="assetsFile/js/index.js"></script>
+<script src="assetsFile/js/jquery.js"></script>
+<script src="assetsFile/js/bootstrap.js"></script>
+<script src="assetsFile/js/chart.js"></script>
+<script>
+const data = {
+  labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [30, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+};
+  const config = {
+  type: 'doughnut',
+  data: data,
+};
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+</body>
+</html>

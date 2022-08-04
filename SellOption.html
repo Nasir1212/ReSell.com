@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="assetsFile/css/index.css"  >
+    <link rel="stylesheet" href="assetsFile/css/bootstrap.css"  >
+
+    <!-- CSS only -->
+    <script src="assetsFile/js/header.js" type="text/javascript" defer></script>
+    <script src="assetsFile/js/footer.js" type="text/javascript" defer></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="assetsFile/js/summernote-lite.min.js"></script>
+    <title>ReSell</title>
+</head>
+<body>
+    
+<!---Header Section--->
+<header-component></header-component>
+
+
+
+<!--Main Section-->
+<main>
+<section class="add-sell-product-section">
+
+    <div class="add-sell-product-container">
+        <div class="add-sell-product-row">
+            <h5 class="text-muted m-3">Add to Sell Product</h5>
+            <div class="add-sell-product-col">
+                <div class="form-container">
+                    <form name="ProductImageForm" >
+            <table>
+                <tbody>
+                <tr>
+                    <td><input type="text" name="ProductName" id="" placeholder="Product Name"></td>
+                </tr>
+
+            
+                <tr>
+                    <td><input type="text" name="ProductTitle" id="" placeholder="Product Title"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="text" name="MinimumPrice" id="" placeholder="Minimum Price"></td>
+                </tr>
+
+                <tr>
+                    
+                    <td ><label for="productImg" id="selectImg">  <img  src="assetsFile/image/imageLogo/photo-camera.png" alt=""> 
+                        <span class="text-muted">add Image</span>
+                        <input style="display: none;"   type="file" onchange="handleImage(event)" name="productImage" id="productImg" ></label> </td>
+                          
+               </tr>
+
+               
+
+               <tr style="position:relative;">
+                <td><span title="Add more image" id="addNew"  onclick="addMoreImage(event)" >&#10011;</span></td>
+               </tr>
+
+               
+              <tr id="textarea">
+                  <td>
+                    <textarea id="summernote" name="editordata">
+                        Product Description
+                    </textarea>
+            <button type="button" class="btn btn-info w-50 mt-3 " onclick="handleProductData()">sumbit</button>
+                  </td>
+              </tr>
+               
+                   
+
+            </table>
+
+        </tbody>
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+
+</section>
+
+
+</main>
+<!--Footer Section-->
+
+<footer-component></footer-component>
+<script>
+
+
+
+    $('#summernote').summernote({
+        placeholder:"Product Description",
+        tabsize: 6,
+        focus: true ,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['view', ['codeview', 'help']]
+          
+        ]
+      });
+      addMoreImage = (evt)=>{
+    let formLememLenth =  document.forms['ProductImageForm'].elements.length
+            let tbody = document.getElementsByTagName("tbody")[0]
+            let tr = tbody.insertRow(tbody.childElementCount-2);
+            let td = tr.insertCell(0);
+            let label =   document.createElement('label');
+            label.for = "productImg"
+            label.id= "selectImg"
+            let img =   document.createElement('img');
+            img.src = "assetsFile/image/imageLogo/photo-camera.png";
+            let span = document.createElement("span");
+            span.className ="text-muted";
+            span.innerText = "add Image"
+            let inputFile =   document.createElement('input');
+            inputFile.type = 'file';
+            inputFile.name = `productImage${formLememLenth}`;
+            inputFile.style = 'display:none';
+            inputFile.setAttribute('onchange','handleImage(event)');
+            let spanClsoe =   document.createElement('span');
+            spanClsoe.title="Close";
+            spanClsoe.setAttribute('onclick','this.parentElement.parentElement.remove()')
+            spanClsoe.className ='close  imageRemove'
+            spanClsoe.innerHTML ='&#9747;'
+
+            label.appendChild(img)
+            label.appendChild(span)
+            label.appendChild(inputFile)
+            td.appendChild(spanClsoe)
+            td.appendChild(label)
+
+      }
+
+      handleImage = (e)=>{
+    
+       let FileType = e.target.files[0].type
+if((/image\/(gif|jpe?g|tiff?|png|webp|bmp)$/gi).test(FileType) === true){
+let url  = URL.createObjectURL(e.target.files[0])
+e.target.parentElement.firstElementChild.src =  url
+e.target.previousElementSibling.innerHTML = e.target.files[0].name
+
+}else{
+    e.target.files[0].name = "";
+}
+console.log(e.target.files[0].name)
+      }
+
+      handleProductData =()=>{
+    
+     let formDATA = new FormData(document.forms['ProductImageForm'])
+
+    let Data =    Object.fromEntries(formDATA.entries());
+console.log(Data['productImage'])
+ 
+      }
+ 
+
+ </script>
+<script src="assetsFile/js/index.js"></script>
+<script src="assetsFile/js/jquery.js"></script>
+<script src="assetsFile/js/bootstrap.js"></script>
+
+
+</body>
+</html>
